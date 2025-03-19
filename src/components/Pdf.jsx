@@ -118,9 +118,9 @@ function ViewPdfsPage() {
   return (
     <div style={styles.container}>
       <div style={styles.leftPanel}>
-        <h2>Uploaded PDFs</h2>
+        <h2>Uploaded Documents</h2>
         {pdfFiles.length === 0 ? (
-          <p>No PDFs uploaded</p>
+          <p>No documents uploaded!</p>
         ) : (
           pdfFiles.map((url, index) => (
             <iframe
@@ -136,7 +136,15 @@ function ViewPdfsPage() {
       </div>
 
       <div style={styles.rightPanel}>
-        <h2>Word Editor</h2>
+      <div style={{ marginTop: "10px" }}>
+          <input
+            type="file"
+            accept=".docx"
+            onChange={handleDocxUpload}
+            style={{ padding: "10px", cursor: "pointer" }}
+          />
+        </div>
+
         <Editor
           apiKey="mg26odid0ixyd613i1bwfesxk4eu8q54q3cyaoatbk2xyzjz"
           value={editorContent}
@@ -160,15 +168,6 @@ function ViewPdfsPage() {
           }}
           onEditorChange={handleEditorChange}
         />
-
-        <div style={{ marginTop: "10px" }}>
-          <input
-            type="file"
-            accept=".docx"
-            onChange={handleDocxUpload}
-            style={{ padding: "10px", cursor: "pointer" }}
-          />
-        </div>
       </div>
     </div>
   );
